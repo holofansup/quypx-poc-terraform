@@ -143,9 +143,9 @@ resource "aws_eks_node_group" "eks_manage_nodegroup" {
   dynamic "taint" {
     for_each = try(var.kubernetes_taint, null) == null ? [] : var.kubernetes_taint
     content {
-      key    = kubernetes_taint.value.key
-      value  = kubernetes_taint.value.value
-      effect = kubernetes_taint.value.effect
+      key    = taint.value.key
+      value  = taint.value.value
+      effect = taint.value.effect
     }
   }
 
@@ -166,11 +166,12 @@ resource "aws_eks_node_group" "eks_manage_nodegroup" {
 
 ### EKS Addon
 resource "aws_eks_addon" "eks_addon" {
-  count                    = length(var.eks_add_ons)
-  cluster_name             = aws_eks_cluster.eks_cluster.name
-  addon_name               = var.eks_add_ons[count.index].required_addon_name
-  addon_version            = try(var.eks_add_ons[count.index].version, null)
-  service_account_role_arn = try(var.eks_add_ons[count.index].service_account_role_arn, null)
+  count                       = length(var.eks_add_ons)
+  cluster_name                = aws_eks_cluster.eks_cluster.name
+  addon_name                  = var.eks_add_ons[count.index].required_addon_name
+  addon_version               = try(var.eks_add_ons[count.index].version, null)
+  service_account_role_arn    = try(var.eks_add_ons[count.index].service_account_role_arn, null)
+  resolve_conflicts_on_update = try(var.eks_add_ons[count.index].resolve_conflicts_on_update, "OVERWRITE")
 
   tags = try(var.eks_add_ons[count.index].addon_tags, {})
   depends_on = [

@@ -9,19 +9,19 @@ variable "common_tags" {
 variable "cognito_pools" {
   description = "List of Cognito user pool configurations"
   type = list(object({
-    user_pool_name                       = string
-    alias_attributes                     = list(string)
-    auto_verified_attributes             = list(string)
-    username_case_sensitive              = bool
-    password_minimum_length              = number
-    password_require_lowercase           = bool
-    password_require_numbers             = bool
-    password_require_symbols             = bool
-    password_require_uppercase           = bool
-    temporary_password_validity_days     = number
-    mfa_configuration                    = string
+    user_pool_name                           = string
+    alias_attributes                         = list(string)
+    auto_verified_attributes                 = list(string)
+    username_case_sensitive                  = bool
+    password_minimum_length                  = number
+    password_require_lowercase               = bool
+    password_require_numbers                 = bool
+    password_require_symbols                 = bool
+    password_require_uppercase               = bool
+    temporary_password_validity_days         = number
+    mfa_configuration                        = string
     software_token_mfa_configuration_enabled = bool
-    recovery_mechanisms                  = list(object({
+    recovery_mechanisms = list(object({
       name     = string
       priority = number
     }))

@@ -64,19 +64,19 @@ variable "cluster_tags" {
 ### ADD On
 variable "eks_add_ons" {
   type = list(object({
-    required_addon_name      = string
-    version                  = string
-    resolve_conflicts        = string
-    service_account_role_arn = string
-    addon_tags               = map(string)
+    required_addon_name         = string
+    version                     = string
+    resolve_conflicts_on_update = string
+    service_account_role_arn    = string
+    addon_tags                  = map(string)
   }))
   default = [
     {
-      required_addon_name      = null
-      version                  = null
-      resolve_conflicts        = null
-      service_account_role_arn = null
-      addon_tags               = null
+      required_addon_name         = null
+      version                     = null
+      resolve_conflicts_on_update = null
+      service_account_role_arn    = null
+      addon_tags                  = null
     }
   ]
 }

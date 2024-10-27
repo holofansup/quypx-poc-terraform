@@ -1,5 +1,5 @@
 data "terraform_remote_state" "networking" {
-  backend   = "s3"
+  backend = "s3"
   config = {
     bucket  = "quypx-poc-terraform-state"
     key     = "level-1-networking/terraform.tfstate"

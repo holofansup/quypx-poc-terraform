@@ -14,7 +14,7 @@ resource "helm_release" "karpenter" {
   repository = var.karpenter_repository
   chart      = var.karpenter_chart
   version    = var.karpenter_version
-  
+
   namespace        = var.karpenter_namespace
   create_namespace = var.create_namespace
 
@@ -42,7 +42,7 @@ resource "aws_ec2_tag" "security_groups_tag" {
 }
 
 resource "kubectl_manifest" "karpenter_node_pool" {
-    yaml_body = <<YAML
+  yaml_body = <<YAML
       apiVersion: karpenter.sh/v1beta1
       kind: NodePool
       metadata:

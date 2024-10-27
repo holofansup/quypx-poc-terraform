@@ -51,6 +51,8 @@ module "eks_cluster" {
   force_update_version                 = each.value.nodegroup.force_update_version
   kubernetes_labels                    = each.value.nodegroup.kubernetes_labels
   ami_release_version                  = each.value.nodegroup.ami_release_version
+  kubernetes_taint                     = each.value.nodegroup.kubernetes_taint
+
 
   kubernetes_version = each.value.nodegroup.kubernetes_version
   eks_nodegroup_tags = each.value.nodegroup.tags

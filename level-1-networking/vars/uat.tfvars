@@ -180,61 +180,61 @@ security_groups = {
 }
 
 vpc_endpoints = [
-#   {
-#     vpc                 = "quypx-poc-uat-vpc"
-#     name                = "quypx-poc-uat-vpce-interface-ecrdocker"
-#     service             = "com.amazonaws.ap-southeast-1.ecr.dkr"
-#     type                = "Interface"
-#     ip_address_type     = "IPv4"
-#     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
-#     security_groups     = ["quypx-poc-uat-sgrp-ecrEndpoint"]
-#     private_dns_enabled = true
-#   },
-#   {
-#     vpc                 = "quypx-poc-uat-vpc"
-#     name                = "quypx-poc-uat-vpce-interface-ecrapi"
-#     service             = "com.amazonaws.ap-southeast-1.ecr.api"
-#     type                = "Interface"
-#     ip_address_type     = "IPv4"
-#     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
-#     security_groups     = ["quypx-poc-uat-sgrp-ecrEndpoint"]
-#     private_dns_enabled = true
-#   },
-#   {
-#     vpc          = "quypx-poc-uat-vpc"
-#     name         = "quypx-poc-uat-vpce-gateway-s3"
-#     service      = "com.amazonaws.ap-southeast-1.s3"
-#     type         = "Gateway"
-#     route_tables = ["quypx-poc-uat-rtb-private-app"]
-#   },
-#   {
-#     vpc                 = "quypx-poc-uat-vpc"
-#     name                = "quypx-poc-uat-vpce-interface-logs"
-#     service             = "com.amazonaws.ap-southeast-1.logs"
-#     type                = "Interface"
-#     ip_address_type     = "IPv4"
-#     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
-#     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
-#     private_dns_enabled = true
-#   },
-#   {
-#     vpc                 = "quypx-poc-uat-vpc"
-#     name                = "quypx-poc-uat-vpce-interface-ec2"
-#     service             = "com.amazonaws.ap-southeast-1.ec2"
-#     type                = "Interface"
-#     ip_address_type     = "IPv4"
-#     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
-#     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
-#     private_dns_enabled = true
-#   },
-#   {
-#     vpc                 = "quypx-poc-uat-vpc"
-#     name                = "quypx-poc-uat-vpce-interface-sts"
-#     service             = "com.amazonaws.ap-southeast-1.sts"
-#     type                = "Interface"
-#     ip_address_type     = "IPv4"
-#     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
-#     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
-#     private_dns_enabled = true
-#   }
+  #   {
+  #     vpc                 = "quypx-poc-uat-vpc"
+  #     name                = "quypx-poc-uat-vpce-interface-ecrdocker"
+  #     service             = "com.amazonaws.ap-southeast-1.ecr.dkr"
+  #     type                = "Interface"
+  #     ip_address_type     = "IPv4"
+  #     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
+  #     security_groups     = ["quypx-poc-uat-sgrp-ecrEndpoint"]
+  #     private_dns_enabled = true
+  #   },
+  #   {
+  #     vpc                 = "quypx-poc-uat-vpc"
+  #     name                = "quypx-poc-uat-vpce-interface-ecrapi"
+  #     service             = "com.amazonaws.ap-southeast-1.ecr.api"
+  #     type                = "Interface"
+  #     ip_address_type     = "IPv4"
+  #     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
+  #     security_groups     = ["quypx-poc-uat-sgrp-ecrEndpoint"]
+  #     private_dns_enabled = true
+  #   },
+  #   {
+  #     vpc          = "quypx-poc-uat-vpc"
+  #     name         = "quypx-poc-uat-vpce-gateway-s3"
+  #     service      = "com.amazonaws.ap-southeast-1.s3"
+  #     type         = "Gateway"
+  #     route_tables = ["quypx-poc-uat-rtb-private-app"]
+  #   },
+  #   {
+  #     vpc                 = "quypx-poc-uat-vpc"
+  #     name                = "quypx-poc-uat-vpce-interface-logs"
+  #     service             = "com.amazonaws.ap-southeast-1.logs"
+  #     type                = "Interface"
+  #     ip_address_type     = "IPv4"
+  #     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
+  #     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
+  #     private_dns_enabled = true
+  #   },
+  #   {
+  #     vpc                 = "quypx-poc-uat-vpc"
+  #     name                = "quypx-poc-uat-vpce-interface-ec2"
+  #     service             = "com.amazonaws.ap-southeast-1.ec2"
+  #     type                = "Interface"
+  #     ip_address_type     = "IPv4"
+  #     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
+  #     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
+  #     private_dns_enabled = true
+  #   },
+  #   {
+  #     vpc                 = "quypx-poc-uat-vpc"
+  #     name                = "quypx-poc-uat-vpce-interface-sts"
+  #     service             = "com.amazonaws.ap-southeast-1.sts"
+  #     type                = "Interface"
+  #     ip_address_type     = "IPv4"
+  #     subnets             = ["quypx-poc-uat-subnet-private-1a-endpoint"]
+  #     security_groups     = ["quypx-poc-uat-sgrp-logsEndpoint"]
+  #     private_dns_enabled = true
+  #   }
 ]

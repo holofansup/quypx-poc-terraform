@@ -46,45 +46,45 @@ variable "helm_settings" {
 }
 
 variable "k8s_arch" {
-  
+
 }
 
 variable "k8s_os" {
-  
+
 }
 
 variable "k8s_capacity_type" {
-  
+
 }
 
 variable "k8s_instance_category" {
-  
+
 }
 
 variable "k8s_instance_family" {
-  
+
 }
 
 variable "k8s_instance_size" {
-  
+
 }
 
 variable "k8s_generation" {
-  
+
 }
 
 variable "karpenter_limit_cpu" {
-  
+
 }
 
 variable "karpenter_limit_memory" {
-  
+
 }
 
 variable "node_class_role" {
-  
+
 }
 
 variable "amiSelector" {
-  
+
 }

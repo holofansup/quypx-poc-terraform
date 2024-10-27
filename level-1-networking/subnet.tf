@@ -10,10 +10,10 @@ module "subnet" {
 
   create_subnet = lookup(each.value, "create_subnet", null)
 
-  vpc_id             = lookup(module.vpc, each.value.vpc, null).id
-  name               = each.value.name
-  cidr_block         = each.value.cidr_block
-  availablility_zone = each.value.availablility_zone
+  vpc_id               = lookup(module.vpc, each.value.vpc, null).id
+  name                 = each.value.name
+  cidr_block           = each.value.cidr_block
+  availablility_zone   = each.value.availablility_zone
   global_resource_tags = var.common_tags
   tags                 = each.value.tags
 }
@@ -51,10 +51,10 @@ module "route_table" {
 locals {
   route_table_associations = flatten([
     for rtb in local.route_tables :
-    [ 
+    [
       for subnet in lookup(rtb, "subnets", []) : {
-      subnet         = subnet
-      route_table_id = rtb.name
+        subnet         = subnet
+        route_table_id = rtb.name
       }
     ]
   ])

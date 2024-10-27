@@ -69,7 +69,7 @@ resource "aws_iam_role" "karpenter_role" {
       }
     ]
   })
-  depends_on = [ module.karpenter ]
+  depends_on = [module.karpenter]
 }
 
 resource "aws_iam_policy" "karpenter_policy" {
@@ -104,9 +104,9 @@ resource "aws_iam_policy" "karpenter_policy" {
         Resource = "*"
       },
       {
-        Sid    = "ConditionalEC2Termination"
-        Effect = "Allow"
-        Action = "ec2:TerminateInstances"
+        Sid      = "ConditionalEC2Termination"
+        Effect   = "Allow"
+        Action   = "ec2:TerminateInstances"
         Resource = "*"
         Condition = {
           StringLike = {
@@ -115,15 +115,15 @@ resource "aws_iam_policy" "karpenter_policy" {
         }
       },
       {
-        Sid    = "PassNodeIAMRole"
-        Effect = "Allow"
-        Action = "iam:PassRole"
+        Sid      = "PassNodeIAMRole"
+        Effect   = "Allow"
+        Action   = "iam:PassRole"
         Resource = "arn:aws:iam::851725269187:role/quypx-poc-uat-eks-nodegroup-iamrole"
       },
       {
-        Sid    = "EKSClusterEndpointLookup"
-        Effect = "Allow"
-        Action = "eks:DescribeCluster"
+        Sid      = "EKSClusterEndpointLookup"
+        Effect   = "Allow"
+        Action   = "eks:DescribeCluster"
         Resource = "arn:aws:eks:ap-southeast-1:851725269187:cluster/quypx-poc-uat-eks-cluster-control-plane"
       },
       {
@@ -136,7 +136,7 @@ resource "aws_iam_policy" "karpenter_policy" {
         Condition = {
           StringEquals = {
             "aws:RequestTag/kubernetes.io/cluster/quypx-poc-uat-eks-cluster-control-plane" = "owned"
-            "aws:RequestTag/topology.kubernetes.io/region" = "ap-southeast-1"
+            "aws:RequestTag/topology.kubernetes.io/region"                                 = "ap-southeast-1"
           }
           StringLike = {
             "aws:RequestTag/karpenter.k8s.aws/ec2nodeclass" = "*"
@@ -152,13 +152,13 @@ resource "aws_iam_policy" "karpenter_policy" {
         Resource = "*"
         Condition = {
           StringEquals = {
-            "aws:RequestTag/kubernetes.io/cluster/quypx-poc-uat-eks-cluster-control-plane" = "owned"
-            "aws:RequestTag/topology.kubernetes.io/region" = "ap-southeast-1"
+            "aws:RequestTag/kubernetes.io/cluster/quypx-poc-uat-eks-cluster-control-plane"  = "owned"
+            "aws:RequestTag/topology.kubernetes.io/region"                                  = "ap-southeast-1"
             "aws:ResourceTag/kubernetes.io/cluster/quypx-poc-uat-eks-cluster-control-plane" = "owned"
-            "aws:ResourceTag/topology.kubernetes.io/region" = "ap-southeast-1"
+            "aws:ResourceTag/topology.kubernetes.io/region"                                 = "ap-southeast-1"
           }
           StringLike = {
-            "aws:RequestTag/karpenter.k8s.aws/ec2nodeclass" = "*"
+            "aws:RequestTag/karpenter.k8s.aws/ec2nodeclass"  = "*"
             "aws:ResourceTag/karpenter.k8s.aws/ec2nodeclass" = "*"
           }
         }
@@ -175,7 +175,7 @@ resource "aws_iam_policy" "karpenter_policy" {
         Condition = {
           StringEquals = {
             "aws:ResourceTag/kubernetes.io/cluster/quypx-poc-uat-eks-cluster-control-plane" = "owned"
-            "aws:ResourceTag/topology.kubernetes.io/region" = "ap-southeast-1"
+            "aws:ResourceTag/topology.kubernetes.io/region"                                 = "ap-southeast-1"
           }
           StringLike = {
             "aws:ResourceTag/karpenter.k8s.aws/ec2nodeclass" = "*"
@@ -183,14 +183,14 @@ resource "aws_iam_policy" "karpenter_policy" {
         }
       },
       {
-        Sid    = "AllowInstanceProfileReadActions"
-        Effect = "Allow"
-        Action = "iam:GetInstanceProfile"
+        Sid      = "AllowInstanceProfileReadActions"
+        Effect   = "Allow"
+        Action   = "iam:GetInstanceProfile"
         Resource = "*"
       }
     ]
   })
-  depends_on = [ aws_iam_role.karpenter_role ]
+  depends_on = [aws_iam_role.karpenter_role]
 }
 
 resource "aws_iam_role_policy_attachment" "karpenter_policy_attachment" {
