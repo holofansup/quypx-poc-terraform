@@ -200,7 +200,7 @@ eks = {
       k8s_capacity_type      = "on-demand"
       k8s_instance_category  = "t"
       k8s_instance_family    = "t3"
-      k8s_instance_size      = ["small", "medium", "large"]
+      k8s_instance_size      = ["medium", "large"]
       k8s_generation         = "2"
       karpenter_limit_cpu    = "20"
       karpenter_limit_memory = "20Gi"
@@ -217,5 +217,19 @@ ecr = [
     kms_enabled   = false
     kms_key_alias = null
     tags          = { "Name" : "quypx-poc-uat-be-app" }
+  },
+  {
+    name          = "quypx-poc-uat-jenkins-agent"
+    tag_immutable = false
+    kms_enabled   = false
+    kms_key_alias = null
+    tags          = { "Name" : "quypx-poc-uat-jenkins-agent" }
+  },
+  {
+    name          = "quypx-poc-uat-kaniko-agent"
+    tag_immutable = false
+    kms_enabled   = false
+    kms_key_alias = null
+    tags          = { "Name" : "quypx-poc-uat-kaniko-agent" }
   }
 ]

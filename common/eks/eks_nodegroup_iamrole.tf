@@ -39,3 +39,9 @@ resource "aws_iam_role_policy_attachment" "eks_ebs_csi_driver_policy" {
   role       = aws_iam_role.eks_node_group_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 }
+
+### ECR policy
+resource "aws_iam_role_policy_attachment" "ecr_policy" {
+  role       = aws_iam_role.eks_node_group_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryPowerUser"
+}
