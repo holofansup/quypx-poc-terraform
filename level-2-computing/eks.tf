@@ -2,6 +2,9 @@ data "aws_eks_cluster_auth" "this" {
   name = module.eks_cluster["quypx-poc-uat-eks-cluster-control-plane"].cluster_name
 }
 
+
+data "aws_caller_identity" "current" {}
+
 module "eks_cluster" {
   source = "../common/eks"
 

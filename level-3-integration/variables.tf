@@ -5,26 +5,6 @@ variable "common_tags" {
   description = "Default tags for all resources"
 }
 
-### LAMBDA
-variable "lambda_function" {
-  type        = any
-  default     = null
-  description = "Map variable to define all value for lambda function"
-}
-
-variable "lambda_layer" {
-  type        = any
-  default     = null
-  description = "Map varibale for lambda layers"
-}
-
-### RDS
-variable "aurora" {
-  type        = any
-  default     = null
-  description = "Map variable for rds instance"
-}
-
 ### COGNITO
 variable "cognito_pools" {
   description = "List of Cognito user pool configurations"
@@ -64,20 +44,5 @@ variable "cognito_pools" {
     client_prevent_user_existence_errors = string
     client_enable_token_revocation       = bool
   }))
-  default = null
-}
-
-
-### ECR
-variable "ecr" {
-  description = "List of ecr configuration"
-  type        = any
-  default     = null
-}
-
-### APP RUNNER
-variable "app_runner" {
-  description = "List of app runner instance configuration"
-  type = any
   default = null
 }

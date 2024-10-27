@@ -1,5 +1,5 @@
 resource "aws_iam_role" "eks_node_group_role" {
-  name = "quypx-poc-eks-nodegroup-iamrole"
+  name = "quypx-poc-uat-eks-nodegroup-iamrole"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
