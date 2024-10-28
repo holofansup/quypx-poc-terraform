@@ -6,7 +6,7 @@ locals {
 }
 
 module "cognito" {
-  source   = "../modules/cognito"
+  source   = "../common/cognito"
   for_each = local.cognito_pools
 
   user_pool_name           = each.key
@@ -56,16 +56,30 @@ module "cognito" {
 
   ### Clients
   clients = [
-    {
-      name                          = each.value.client_name
-      generate_secret               = each.value.client_generate_secret
-      explicit_auth_flows           = each.value.client_explicit_auth_flows
-      auth_session_validity         = each.value.client_auth_session_validity
-      client_refresh_token_validity = each.value.client_refresh_token_validity
-      access_token_validity         = each.value.client_access_token_validity
-      client_id_token_validity      = each.value.client_id_token_validity
-      prevent_user_existence_errors = each.value.client_prevent_user_existence_errors
-      enable_token_revocation       = each.value.client_enable_token_revocation
+    for client in each.value.clients : {
+      name                          = client.client_name
+      generate_secret               = client.client_generate_secret
+      explicit_auth_flows           = client.client_explicit_auth_flows
+      auth_session_validity         = client.client_auth_session_validity
+      client_refresh_token_validity = client.client_refresh_token_validity
+      access_token_validity         = client.client_access_token_validity
+      client_id_token_validity      = client.client_id_token_validity
+      prevent_user_existence_errors = client.client_prevent_user_existence_errors
+      enable_token_revocation       = client.client_enable_token_revocation
+    }
+  ]
+
+  #### Resource server
+  resource_servers = [
+    for resource in each.value.resource_servers : {
+      name = resource.resource_name
+      identifier = resource.resource_identifier
+      scope = [
+        for scope in resource.resource_scope : {
+          scope_name = scope.scope_name
+          scope_description = scope.scope_description
+        }
+      ]
     }
   ]
 }

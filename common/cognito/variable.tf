@@ -549,3 +549,37 @@ variable "client_token_validity_units" {
   }
 
 }
+
+
+#
+# aws_cognito_resource_server
+#
+variable "resource_servers" {
+  description = "A container with the user_groups definitions"
+  type        = list(any)
+  default     = []
+}
+
+variable "resource_server_name" {
+  description = "A name for the resource server"
+  type        = string
+  default     = null
+}
+
+variable "resource_server_identifier" {
+  description = "An identifier for the resource server"
+  type        = string
+  default     = null
+}
+
+variable "resource_server_scope_name" {
+  description = "The scope name"
+  type        = string
+  default     = null
+}
+
+variable "resource_server_scope_description" {
+  description = "The scope description"
+  type        = string
+  default     = null
+}

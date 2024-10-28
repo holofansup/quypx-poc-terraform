@@ -53,3 +53,8 @@ output "client_secrets_map" {
   value       = var.enabled ? { for k, v in aws_cognito_user_pool_client.client : v.name => v.client_secret } : null
   sensitive   = true
 }
+
+output "resource_servers_scope_identifiers" {
+  description = " A list of all scopes configured in the format identifier/scope_name"
+  value       = var.enabled ? aws_cognito_resource_server.resource.*.scope_identifiers : null
+}

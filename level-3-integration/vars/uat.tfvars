@@ -1,6 +1,6 @@
 cognito_pools = [
   {
-    user_pool_name           = "poc_dev-cogusrpool-idp-lp-summit"
+    user_pool_name           = "quypx-poc-uat-cognito-pool"
     alias_attributes         = ["preferred_username"]
     auto_verified_attributes = ["email"]
     username_case_sensitive  = false
@@ -35,20 +35,62 @@ cognito_pools = [
 
     device_configuration = {}
 
-    client_name            = "poc_dev-cogusrpool-idp-lp-summit-client"
-    client_generate_secret = false
-    client_explicit_auth_flows = [
-      "ALLOW_ADMIN_USER_PASSWORD_AUTH",
-      "ALLOW_CUSTOM_AUTH",
-      "ALLOW_REFRESH_TOKEN_AUTH",
-      "ALLOW_USER_PASSWORD_AUTH",
-      "ALLOW_USER_SRP_AUTH"
+    clients = [
+      {
+        client_name            = "quypx-poc-uat-cognito-client"
+        client_generate_secret = false
+        client_explicit_auth_flows = [
+          "ALLOW_ADMIN_USER_PASSWORD_AUTH",
+          "ALLOW_CUSTOM_AUTH",
+          "ALLOW_REFRESH_TOKEN_AUTH",
+          "ALLOW_USER_PASSWORD_AUTH",
+          "ALLOW_USER_SRP_AUTH"
+        ]
+        client_auth_session_validity         = 3
+        client_refresh_token_validity        = 30
+        client_access_token_validity         = 24
+        client_id_token_validity             = 24
+        client_prevent_user_existence_errors = "ENABLED"
+        client_enable_token_revocation       = true
+      }
     ]
-    client_auth_session_validity         = 3
-    client_refresh_token_validity        = 30
-    client_access_token_validity         = 24
-    client_id_token_validity             = 24
-    client_prevent_user_existence_errors = "ENABLED"
-    client_enable_token_revocation       = true
+
+    resource_servers = [
+      {
+        resource_name = "weather-resource-server"
+        resource_identifier = "test"
+        resource_scope = [
+          {
+            scope_name = "weather.get"
+            scope_description = "desc weather.get"
+          },
+          {
+            scope_name = "weatherrapidapi.get"
+            scope_description = "desc weatherrapidapi.get"
+          }
+        ]
+      }
+    ]
   }
 ]
+
+agw = {
+  api_name = "quypx-poc-uat-api-gateway"
+  api_description = "Quypx POC UAT API Gateway for weather api"
+  endpoint_configuration = {
+    types = "REGIONAL"
+    vpc_endpoint_ids = null
+  }
+
+  resource_path_part = "weatherrapidapi"
+  method_http_method = "GET"
+
+  # Authorizer
+  cognito_pool_name = "quypx-poc-uat-cognito-pool"
+
+  # Integration
+  integration_uri = "http://quypx-be.poc-h2hubgenai.com/weatherrapidapi"
+
+  # Stage
+  stage_name = "uat"
+}
